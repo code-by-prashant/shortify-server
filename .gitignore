@@ -3,3 +3,11 @@ build/
 .idea/
 *.log
 *.class
+
+# macOS
+.DS_Store
+
+# Eclipse
+.classpath
+.project
+.settings/
