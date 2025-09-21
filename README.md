@@ -50,8 +50,8 @@ Controller → Service → Repository → Database (MySQL)
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/<your-username>/url-shortener.git
-cd url-shortener
+git clone https://github.com/code-by-prashant/shortify-server.git
+cd shortify-server
 ```
 
 ### 2. Configure MySQL
@@ -59,13 +59,13 @@ cd url-shortener
 Create a database:
 
 ```sql
-CREATE DATABASE url_shortener;
+CREATE DATABASE shortify;
 ```
 
 Update `src/main/resources/application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/shortify_db?allowPublicKeyRetrieval=true&useSSL=false
+spring.datasource.url=jdbc:mysql://localhost:3306/shortify?allowPublicKeyRetrieval=true&useSSL=false
 spring.datasource.username=root
 spring.datasource.password=<yourpassword>
 spring.jpa.hibernate.ddl-auto=update
@@ -102,8 +102,8 @@ mvn spring-boot:run
 
 ```json
 {
-  "name": "Alice",
-  "email": "alice@example.com"
+  "name": "Prashant",
+  "email": "prashant@gmail.com"
 }
 ```
 
@@ -112,8 +112,8 @@ mvn spring-boot:run
 ```json
 {
   "id": 1,
-  "name": "Alice",
-  "email": "alice@example.com",
+  "name": "Prashant",
+  "email": "prashant@gmail.com",
   "apiKey": "c2f1a9c0-5b0f-4c2a-b3e7-8e123456abcd"
 }
 ```
@@ -126,14 +126,16 @@ mvn spring-boot:run
 **Headers**:
 
 ```
-X-API-KEY: <your-api-key>
+X-API-KEY: <your-api-key> 'example : c2f1a9c0-5b0f-4c2a-b3e7-8e123456abcd'
 ```
 
-**Params**:
+**Body (JSON)**:
 
-```
-originalUrl=https://www.google.com
-userId=1
+```json
+{
+    "originalUrl": "https://github.com/code-by-prashant/shortify-server.git",
+    "userId": "1"
+}
 ```
 
 **Response**:
@@ -147,7 +149,7 @@ userId=1
 ### 🔹 3. Redirect to Original URL
 
 **GET** `http://localhost:8080/shortify/url/MQ==`
-🔁 Redirects to `https://www.google.com`
+🔁 Redirects to `https://github.com/code-by-prashant/shortify-server.git`
 
 ---
 
@@ -233,4 +235,5 @@ PONG
 
 Made with ❤️ by **Prashant Mishra**
 🔗 Free to use & improve
+
 
